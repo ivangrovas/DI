@@ -1,17 +1,17 @@
-a = 0
-b = 0
+num1 = 0
+num2 = 0
 
-def suma_de_dos_numeros(a, b):
-    return a + b
+def suma(num1, num2):
+    return num1 + num2
 
-def resta_de_dos_numeros(a, b):
-    return a - b
+def resta(num1, num2):
+    return num1 - num2
 
-def multiplicacion_de_dos_numeros (a, b):
-    return a * b
+def multiplicacion(num1, num2):
+    return num1 * num2
 
-def division_de_dos_numeros(a, b):
-    if (b == 0): 
+def division(num1, num2):
+    if (num2 == 0): 
         print ("ERROR: No se puede dividir entre 0")
     else:
-        return a / b
+        return num1 / num2
