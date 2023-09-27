@@ -15,9 +15,9 @@ operaciones = {
 while (repetir == True) :
 
     opcion = (input (" Que operación desea realizar (suma/resta/multiplicacion/division) ?"))
-
     while (opcion != "suma") & (opcion != "resta") & (opcion != "multiplicacion") & (opcion != "division"):
-        print ("Introduzca el nombre de una de las 4 operaciones disponibles")
+        opcion = input ("Introduzca el nombre de una de las 4 operaciones disponibles")
+        
 
     num1= float(input ("Introduzca el primer número con el que desea operar ?"))
     num2= float(input ("Introduzca el segundo número con el que desea operar ?"))
