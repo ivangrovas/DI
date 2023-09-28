@@ -1,4 +1,7 @@
 
+import random
+
+
 opcion = " "
 contAciertos = 0
 opcionMayus=" "
@@ -21,56 +24,21 @@ correctas = {
    3:"B"
 }
 
-print(adivinanzas[1])
-print(respuestas[1])
-opcion = input ("\n\tTeclea opción? ")
-opcionMayus = opcion.upper()
+keys_adivinanzas = random.sample([1,2,3],2)
 
-if (opcionMayus==correctas[1]):
-    print ("\nFELICIDADES. RESPUESTA CORRECTA !!!!")
-    contAciertos = contAciertos +10;
+for num in keys_adivinanzas:
+    print(adivinanzas[num])
+    print(respuestas[num])
+    opcion = input ("\n\tTeclea opción? ")
+    opcionMayus = opcion.upper()
+    
+    if (opcionMayus==correctas[num]):
+        print ("\nFELICIDADES. RESPUESTA CORRECTA !!!!")
+        contAciertos = contAciertos +10;
 
-if (opcionMayus!=correctas[1]):
-    print(" La opción es incorrecta, has fallado. ")
-    contAciertos = contAciertos -5;
-
-opcion = " "
-
-print(adivinanzas[2])
-print(respuestas[2])
-opcion = input ("\n\tTeclea opción? ")
-opcionMayus = opcion.upper();
-
-print(adivinanzas[2])
-print(respuestas[2])
-
-if (opcionMayus==correctas[2]):
-    print ("\nFELICIDADES. RESPUESTA CORRECTA !!!!")
-    contAciertos = contAciertos +10;
-
-if (opcionMayus!=correctas[2]):
-    print(" La opción es incorrecta, has fallado. ")
-    contAciertos = contAciertos -5;
-
-opcion = " "
-opcionMayus= " "
-
-print(adivinanzas[3])
-print(respuestas[3])
-
-opcion = input ("\n\tTeclea opción? ")
-opcionMayus = opcion.upper();
-
-print(adivinanzas[3])
-print(respuestas[3])
-
-if (opcionMayus==correctas[3]):
-    print ("\nFELICIDADES. RESPUESTA CORRECTA !!!!")
-    contAciertos = contAciertos +10;
-
-if (opcionMayus!=correctas[3]):
-    print(" La opción es incorrecta, has fallado. ")
-    contAciertos = contAciertos -5;
+    if (opcionMayus!=correctas[num]):
+        print(" La opción es incorrecta, has fallado. ")
+        contAciertos = contAciertos -5;
 
 print ("TU PUNTUACIÓN HA SIDO: ")
 print (contAciertos)
