@@ -25,3 +25,5 @@ class MainWindow:
 
         self.buttonNo = ttk.Button(self.frame, text="No", command=self.on_button_clicked_no)
         self.buttonNo.pack(side="right",expand=True)
+
+        
