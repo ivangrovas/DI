@@ -1,0 +1,30 @@
+[
+    {
+        "name": "F1 1",
+        "description": "Max Verstappen se llevó una nueva victoria en la carrera del Gran Premio de Japón 2023 de Fórmula 1. Mira los resultados y el resumen del domingo en Suzuka.",
+        "image_url": "https://raw.githubusercontent.com/ivangrovas/DI/main/sprint1tkinter/catalog/data/edited/mvwdc.jpeg"
+    },
+    {
+        "name": "F1 2",
+        "description": "La asociación McLaren-Honda demostró ser imparable, y el MP4/4 ganó todas las carreras excepto una esa temporada, y también todas las pole position del año menos una.",
+        "image_url": "https://raw.githubusercontent.com/ivangrovas/DI/main/sprint1tkinter/catalog/data/edited/th-3420979466.jpeg"
+    },
+    {
+        "name": "F1 3",
+        "description": "La carrera del Gran Premio de Mónaco 2023 de Fórmula 1 nos dejó una nueva victoria de Max Verstappen y un podio de Fernando Alonso. Resumen y resultados del domingo.",
+        "image_url": "https://raw.githubusercontent.com/ivangrovas/DI/main/sprint1tkinter/catalog/data/edited/th-828554261.jpeg"
+    },
+    {
+        "name": "F1 4",
+        "description": "El Ferrari F2005 fue un monoplaza de Fórmula 1, con el cual Scuderia Ferrari compitió en la temporada 2005. Finalmente las prestaciones que ofrecía el F2005 no estuvieron a la altura.",
+        "image_url": "https://raw.githubusercontent.com/ivangrovas/DI/main/sprint1tkinter/catalog/data/edited/wc1728204-2069878345.jpeg"
+      
+    },
+    {
+        "name": "F1 5",
+        "description": "El Ferrari SF71H fue un monoplaza de Fórmula 1 diseñado por la Scuderia Ferrari para competir en la temporada 2018 de Fórmula 1.",
+        "image_url": "https://raw.githubusercontent.com/ivangrovas/DI/main/sprint1tkinter/catalog/data/edited/wp6936516-653863971.jpeg"
+      
+    }
+  ]
+  
