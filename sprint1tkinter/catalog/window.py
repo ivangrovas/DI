@@ -6,8 +6,9 @@ from cell import Cell
 from detail_window import detail_windowf
 
 
-class MainWindow:
+class MainWindow: #Creamos la clase MainWindow
    
+   #Creamos una función pora cuanto se haga clic en la imágen. Esta función llamrá a otra función a la cuál le pasaremos cell como parámetro
     def on_button_clicked (self,cell):
         detail_windowf(cell)
 
