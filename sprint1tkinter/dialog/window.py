@@ -16,7 +16,7 @@ class MainWindow:
 
         self.frame = ttk.Frame(self.root)
         self.frame.pack()
-        
+            
         self.label = ttk.Label(self.frame, text="Elige una opción?")
         self.label.pack()
 
