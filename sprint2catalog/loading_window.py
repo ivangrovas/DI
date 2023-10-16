@@ -1,0 +1,44 @@
+import tkinter as tk
+import threading
+
+class LoadingWindow:
+
+    def __init__(self,root) -> None:
+        self.root = root
+        self.root.title("Cargando...")
+        self.root.geometry("170x120") #Definimos el ancho y el alto de la ventana
+        self.root.resizable (False, False) #Indicamos con resizable que no queremos redimensionar la ventana ni en alto ni en ancho poniendo False
+
+        self.label = tk.Label (self.root, text="Cargando datos...", font=("Arial", 14)) #Con font definimos tipo de letra y tamaño
+        self.label.pack(side=tk.TOP, pady=10)
+
+        label_bg_color = self.label.cget("bg") #Con el método cget obtenemos el valor de la opción que pasamos como parámetro
+        #en este caso, pasando bg queremos obtener el color del fondo
+
+        #El widget canvas lo usaremos para pintar una circunferencia de carga que represente su progreso.
+        self.canvas = tk.Canvas(self.root, width=60, height=60, bg=label_bg_color) #Pasamos el ancho y alto del mismo, así como el color de fondo el cuál obtuvimos con el metodo cget
+        self.canvas.pack()
+
+        self.progress = 0
+
+        self.draw_progress_circle(self.progress)
+
+        self.update_progress_circle()
+    
+    def draw_progress_circle(self,progress):
+        self.canvas.delete("progress") #Elimina el elemento dibujado que tiene la tag asociada
+        angle = int (360 * (progress/100))
+
+        #Con el método create_arc dibujamos el arco de circunferencia. Los 4 primeros numeros indican la x y la y del punto inferior derecho de ese mismo cuadrado
+        self.canvas.create_arc(10,10,35,35, start=0,extent=angle,tags="progress", outline='green', width=4, style = tk.ARC) #start indica el punto en el que empieza a dibujarse la circunferencia, extent el tramo de circunferencia que dibujamos
+        #tags el nombre que asociamos a este dibujo dentro del canvas, outline el color del arco que dibujamos, width el ancho del circulo, style=tk.ARC indica que pintaremos un arco
+
+
+    def update_progress_circle(self):
+        if self.progress < 100:
+            self.progress += 14
+        else:
+            self.progress=0
+        
+        self.draw_progress_circle(self.progress)
+        self.root.after(100, self.update_progress_circle) #Root after llama de nuevo a la función
