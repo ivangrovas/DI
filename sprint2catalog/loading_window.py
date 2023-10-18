@@ -6,7 +6,10 @@ from window import MainWindow
 class LoadingWindow:
 
     def __init__(self,root) -> None:
+
         self.root = root
+        self.finished = False
+        self.json_data= []
         self.root.title("Cargando...")
         self.root.geometry("170x120") #Definimos el ancho y el alto de la ventana
         self.root.resizable (False, False) #Indicamos con resizable que no queremos redimensionar la ventana ni en alto ni en ancho poniendo False
@@ -30,6 +33,11 @@ class LoadingWindow:
         #Realizamos la petición HTTP desde un hilo secundario, es una norma general.
         self.thread = threading.Thread(target=self.feth_json_data) #Lanzamos en este hilo secundario la función fetch_json_data la cuál leerá el json
         self.thread.start()
+
+        #Comprobamos que el hilo está activo
+        if self.thread.is_alive():
+            self.check_thread()
+        
     
     def draw_progress_circle(self,progress):
         self.canvas.delete("progress") #Elimina el elemento dibujado que tiene la tag asociada
@@ -52,13 +60,16 @@ class LoadingWindow:
     def feth_json_data(self):
         response= requests.get("https://raw.githubusercontent.com/ivangrovas/DI/main/recursos/catalog.json") #Consumimos el json alojado en nuestro repositorio de github
         if response.status_code ==200: #Comparamos que la respuesta del json sea exitosa
-            json_data = response.json() #En ese caso guardamos el json en json_data
+            self.json_data = response.json() #En ese caso guardamos el json en json_data
+            self.finished=True
 
-            #cerramos la ventana de carga 
-            #self.root.quit()
-
-            #y por último lanzamos la ventana principal
-            launch_main_window(json_data)
+    #Comprobamos que la ejecución del hilo ha finalizado , en ese caso instanciaremos mainWindow
+    def check_thread(self):
+            if self.finished:
+                self.root.destroy()
+                launch_main_window(self.json_data)
+            else:
+                self.root.after(100, self.check_thread)
 
 def launch_main_window(json_data):
     root = tk.Tk()
