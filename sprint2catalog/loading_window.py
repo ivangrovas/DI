@@ -1,5 +1,7 @@
 import tkinter as tk
 import threading
+import requests
+from window import MainWindow
 
 class LoadingWindow:
 
@@ -24,6 +26,10 @@ class LoadingWindow:
         self.draw_progress_circle(self.progress)
 
         self.update_progress_circle()
+
+        #Realizamos la petición HTTP desde un hilo secundario, es una norma general.
+        self.thread = threading.Thread(target=self.feth_json_data) #Lanzamos en este hilo secundario la función fetch_json_data la cuál leerá el json
+        self.thread.start()
     
     def draw_progress_circle(self,progress):
         self.canvas.delete("progress") #Elimina el elemento dibujado que tiene la tag asociada
@@ -42,3 +48,19 @@ class LoadingWindow:
         
         self.draw_progress_circle(self.progress)
         self.root.after(100, self.update_progress_circle) #Root after llama de nuevo a la función
+
+    def feth_json_data(self):
+        response= requests.get("https://raw.githubusercontent.com/ivangrovas/DI/main/recursos/catalog.json") #Consumimos el json alojado en nuestro repositorio de github
+        if response.status_code ==200: #Comparamos que la respuesta del json sea exitosa
+            json_data = response.json() #En ese caso guardamos el json en json_data
+
+            #cerramos la ventana de carga 
+            #self.root.quit()
+
+            #y por último lanzamos la ventana principal
+            launch_main_window(json_data)
+
+def launch_main_window(json_data):
+    root = tk.Tk()
+    app = MainWindow(root,json_data)
+    root.mainloop()
