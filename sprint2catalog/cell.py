@@ -10,6 +10,3 @@ class Cell: #Creamos la clase
         img_data = Image.open(BytesIO(response.content))
         self.Image_tk = ImageTk.PhotoImage(img_data)
         self.desc = desc
-    
-        
- 

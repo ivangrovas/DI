@@ -12,6 +12,8 @@ class LoadingWindow:
         x = (self.root.winfo_screenwidth()- self.root.winfo_reqwidth()) / 2
         y = (self.root.winfo_screenheight()- self.root.winfo_reqheight()) / 2
         self.root.geometry(f"+{int(x)}+{int(y)}")
+        print (self.root.winfo_reqwidth())
+        print (self.root.winfo_reqheight())
         self.finished = False
         self.json_data= []
         self.root.title("Cargando...")

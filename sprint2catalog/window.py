@@ -1,6 +1,6 @@
 from io import BytesIO
 import threading
-from tkinter import Image, ttk,Button
+from tkinter import Image, messagebox, ttk,Button
 import tkinter as tk
 from PIL import Image, ImageTk
 from detail_window import detail_windowf
@@ -10,8 +10,8 @@ from cell import Cell
 
 class MainWindow:
 
-    #def on_button_clicked (cell):
-    #        detail_windowf(cell)
+    def on_button_clicked (self):
+        messagebox.showinfo(message="Iván Grovas Pérez, son programador", title="Desarrollador") #Creamos un messagebox al cual le pasaremos como parámetros el mensaje a mostrar y el título de la ventana donde se muestra el mensaje
     
     def __init__(self, root,json_data): 
 
@@ -37,3 +37,15 @@ class MainWindow:
             label = ttk.Label(root,image=cell.Image_tk, text=cell.title,compound=tk.BOTTOM) 
             label.grid(row=i,column=0)
             label.bind("<Button-1>",lambda event, cell=cell : detail_windowf(cell))
+
+        #Creamos una barra de menús
+        barra_menus = tk.Menu()
+        menu_archivo = tk.Menu(barra_menus, tearoff=False)  #Creamos el primer menú
+        menu_archivo.add_command(
+            label="Acerca de", #Indicamos como se va a llamar el menú
+            accelerator="Ctrl+N", #Le añadimos un atajo de teclado
+            command= self.on_button_clicked #Le asignamos una utilidad através de una función
+        )       
+        barra_menus.add_cascade(menu=menu_archivo, label="Ayuda") #Lo agregamos a la barra de menús
+        root.config(menu=barra_menus)
+        root.mainloop()
