@@ -10,12 +10,16 @@ from cell import Cell
 
 class MainWindow:
 
-    def on_button_clicked (self, cell):
-            detail_windowf(cell)
+    #def on_button_clicked (cell):
+    #        detail_windowf(cell)
     
     def __init__(self, root,json_data): 
 
         self.root = root
+        #Ajustamos el tamaño de las ventanas con estas funciones.
+        x = (self.root.winfo_screenwidth()- self.root.winfo_reqwidth()) / 2
+        y = (self.root.winfo_screenheight()- self.root.winfo_reqheight()) / 2
+        self.root.geometry(f"+{int(x)}+{int(y)}")
                        
         self.cells = [] #Creamos una lista vacía para guardar los datos
 
@@ -32,4 +36,4 @@ class MainWindow:
         for i, cell in enumerate (self.cells):
             label = ttk.Label(root,image=cell.Image_tk, text=cell.title,compound=tk.BOTTOM) 
             label.grid(row=i,column=0)
-            label.bind("<Button-1>",lambda event, cell=cell : self.on_button_clicked(cell))
+            label.bind("<Button-1>",lambda event, cell=cell : detail_windowf(cell))

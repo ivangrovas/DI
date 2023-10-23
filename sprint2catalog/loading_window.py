@@ -8,6 +8,10 @@ class LoadingWindow:
     def __init__(self,root) -> None:
 
         self.root = root
+        #Ajustamos el tamaño de las ventanas con estas funciones.
+        x = (self.root.winfo_screenwidth()- self.root.winfo_reqwidth()) / 2
+        y = (self.root.winfo_screenheight()- self.root.winfo_reqheight()) / 2
+        self.root.geometry(f"+{int(x)}+{int(y)}")
         self.finished = False
         self.json_data= []
         self.root.title("Cargando...")
@@ -38,7 +42,6 @@ class LoadingWindow:
         if self.thread.is_alive():
             self.check_thread()
         
-    
     def draw_progress_circle(self,progress):
         self.canvas.delete("progress") #Elimina el elemento dibujado que tiene la tag asociada
         angle = int (360 * (progress/100))
