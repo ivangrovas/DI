@@ -42,7 +42,7 @@ class LoadingWindow:
 
         #Comprobamos que el hilo está activo
         if self.thread.is_alive():
-            self.check_thread()
+            self.check_thread()      
         
     def draw_progress_circle(self,progress):
         self.canvas.delete("progress") #Elimina el elemento dibujado que tiene la tag asociada
