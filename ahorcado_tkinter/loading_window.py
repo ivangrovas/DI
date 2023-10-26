@@ -1,6 +1,7 @@
 import tkinter as tk
 import threading
 import requests
+from difficulty_window import MainWindow
 
 class LoadingWindow:
     
@@ -21,7 +22,7 @@ class LoadingWindow:
         self.root.geometry(f"+{int(x)}+{int(y)}")
 
         #Especificamos las diemsniones exactas de la ventana y negamos la posibilidad de reedimensión
-        self.root.geometry("170x120")
+        self.root.geometry("200x120")
         self.root.resizable (False, False)
 
         #Informamos al usuario de lo que está haciendo el programa en este momento
@@ -38,12 +39,12 @@ class LoadingWindow:
         self.update_progress_circle()
 
         #Realizamos la petición HTTP del json que aloja las palabras
-        #self.thread = threading.Thread(target=self.feth_json_data)
-        #self.thread.start()
+        self.thread = threading.Thread(target=self.feth_json_data)
+        self.thread.start()
 
         #Comprobamos la actividad del hilo
-        #if self.thread.is_alive():
-        #    self.check_thread()
+        if self.thread.is_alive():
+            self.check_thread()
     
     #Dibujamos la circunferencia
     def draw_progress_circle(self,progress):
@@ -72,8 +73,11 @@ class LoadingWindow:
     def check_thread(self):
             if self.finished:
                 self.root.destroy()
-                #start game window ( [!!!!!!!] FOR DEVELOPER )
+                launch_main_window(self.json_data)
             else:
                 self.root.after(100, self.check_thread)
 
-#def game window (FOR DEVELOPER)
+def launch_main_window(json_data):
+    root = tk.Tk()
+    app = MainWindow(root,json_data)
+    root.mainloop()
