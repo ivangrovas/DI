@@ -1,0 +1,6 @@
+{
+    "Facil": ["sol", "agua", "flor", "perro", "piso"],
+    "Normal": ["piscina", "saturno", "escuela", "guitarra", "crucero"],
+    "Dificil": ["abecedario", "hipopotamo", "paralelepipedo", "independencia", "anticonstitucionalidad"]
+  }
+  
