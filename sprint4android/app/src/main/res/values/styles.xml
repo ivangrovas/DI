@@ -1,0 +1,13 @@
+<resources>
+
+    <color name="cFondo">#E6E0AA</color>
+    <color name="cTexto">#0A0B0A</color>
+    <color name="cBoton">#DA0928</color>
+
+    <style name="MyOtherCatalogTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowBackground">@color/cFondo</item>
+        <item name="android:textColor">@color/cTexto</item>
+        <item name="colorButtonNormal">@color/cBoton</item>
+    </style>
+
+</resources>
