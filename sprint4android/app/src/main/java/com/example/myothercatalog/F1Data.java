@@ -1,9 +1,14 @@
 package com.example.myothercatalog;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class F1Data {
+public class F1Data implements Parcelable {
 
     //Elementos que componen el JSON del github
     private String name;
@@ -45,4 +50,39 @@ public class F1Data {
         this.name = name;
     }
 
+
+    //Constructor "Protegido" al que se le pasa como parámetro Parcelable
+    protected F1Data(Parcel in) {
+        // Lee las cadenas Parcel, así como las asigna a campos según su correspondencia
+        name = in.readString();
+        description = in.readString();
+        image_url = in.readString();
+    }
+
+    // Implementación de la Interfaz Parcelable
+    public static final Creator<F1Data> CREATOR = new Creator<F1Data>() {
+        // Método que crea una instancia de F1data
+        @Override
+        public F1Data createFromParcel(Parcel in) {
+            return new F1Data(in);
+        }
+        // Método que crea un array de F1Data con el tamaño especifico
+        @Override
+        public F1Data[] newArray(int size) {
+            return new F1Data[size];
+        }
+
+    };
+    // Método que describe los tipos de objetos contenidos en el Parcelable
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+    // Método que escribe los valores de los campos de la clase en un Parcel
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(description);
+        dest.writeString(image_url);
+    }
 }

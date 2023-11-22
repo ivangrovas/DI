@@ -72,8 +72,9 @@ public class MainActivity extends AppCompatActivity {
                         adapter.setOnItemClickListener(new F1RecyclerViewAdapter.OnItemClickListener() {
                             @Override
                             public void onItemClick(int position) {
-                                F1Data f1Data = allTheF1.get(position);
+                                F1Data clickedCoche = allTheF1.get(position);
                                 Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                                intent.putExtra("f1data", clickedCoche); //Pasamos los datos a la nueva actividad
                                 startActivity(intent);
                             }
                         });
