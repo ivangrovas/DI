@@ -5,9 +5,23 @@
     <color name="cBoton">#DA0928</color>
 
     <style name="MyOtherCatalogTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:windowBackground">@color/cFondo</item>
-        <item name="android:textColor">@color/cTexto</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:textColor">#FFFFFF</item>
         <item name="colorButtonNormal">@color/cBoton</item>
+    </style>
+
+    <style name="estiloDA" parent="Widget.AppCompat.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/cTexto</item>
+        <item name="android:background">#EFF3F2</item>
+    </style>
+
+    <style name="estiloButtonDA" parent="Widget.AppCompat.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/cBoton</item>
+        <item name="android:background">#FB0909</item>
     </style>
 
 </resources>

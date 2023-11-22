@@ -8,15 +8,17 @@
 
     <Button
         android:id="@+id/buttonLIKE"
+        style="@style/estiloButtonDA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginBottom="25dp"
         android:hint="Me gusta"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
+        style="@style/estiloDA"
         android:id="@+id/textViewTitleAC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,6 +50,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
+        style="@style/estiloDA"
         android:id="@+id/textDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
