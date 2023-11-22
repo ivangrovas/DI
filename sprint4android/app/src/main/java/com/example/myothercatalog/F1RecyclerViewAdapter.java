@@ -22,8 +22,9 @@ public class F1RecyclerViewAdapter extends RecyclerView.Adapter<F1ViewHolder> {
     private OnItemClickListener mListener;
 
     public interface OnItemClickListener{
-        void onItemClick(int position);
+        void onItemClick(int position); //Método al que se llama al hacer clic en la celda, se le manda la posición
     }
+    // Método para establecer el OnItemClickListener en la clase
     public void setOnItemClickListener(OnItemClickListener listener){
         mListener=listener;
     }
@@ -50,9 +51,11 @@ public class F1RecyclerViewAdapter extends RecyclerView.Adapter<F1ViewHolder> {
         final int adapterPosition = holder.getAdapterPosition();
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) { // Se ejecuta cuando se hace clic en el elemento de la vista del ViewHolder
                 if (mListener != null && adapterPosition != RecyclerView.NO_POSITION) {
                     mListener.onItemClick(adapterPosition);
+                    // Verificamos si mListener es/no es nulo y si
+                    // la posición de adapterPosition es válido en el RecyclerView
                 }
             }
         });
