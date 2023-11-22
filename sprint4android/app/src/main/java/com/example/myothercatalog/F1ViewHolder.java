@@ -1,6 +1,7 @@
 package com.example.myothercatalog;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,7 +27,7 @@ public class F1ViewHolder extends RecyclerView.ViewHolder {
     public  void showData(F1Data data, Activity activity){
         //Recuperamos el elemento nombre de los datos para añadirlo al texto del TextView
         textView.setText(data.getName());
-        //La biblioteca Glide, la cual cargar y muestra la imagen desde la URL proporcionada
+        //La biblioteca Glide, la cual carga y muestra la imagen desde la URL proporcionada
         Glide.with(itemView.getContext()).load(data.getImage_url()).into(imageView);
     }
 }

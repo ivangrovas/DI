@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -26,16 +27,13 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         // Inicialización del RecyclerView
-        recyclerView = findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
 
         // Actividad actual referenciada
         Activity activity = this;
@@ -71,6 +69,14 @@ public class MainActivity extends AppCompatActivity {
                         F1RecyclerViewAdapter adapter = new F1RecyclerViewAdapter(allTheF1, activity);
                         recyclerView.setAdapter(adapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+                        adapter.setOnItemClickListener(new F1RecyclerViewAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(int position) {
+                                F1Data f1Data = allTheF1.get(position);
+                                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                                startActivity(intent);
+                            }
+                        });
                     }
                 },
                 new Response.ErrorListener() {
